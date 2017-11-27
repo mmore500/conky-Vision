@@ -108,14 +108,14 @@ ${execi 300 ~/.conky-vision/get_weather ${template6} ${template7} ${template8} $
 \
 \
 \
-${font Poiret One:weight=Light:size=96}${color0}\
+${font Raleway:weight=Thin:size=96}${color0}\
 ${alignc}${time %H:%M}\
 ${font}${color}
 \
 \
 \
 \
-${font Poiret One:weight=Light:size=28}${color1}\
+${font Raleway:weight=Light:size=28}${color1}\
 ${voffset 30}\
 ${alignc}${execi 300 LANG=${template9} LC_TIME=${template9} date +"%A, %B %d"}\
 ${font}${color}
@@ -123,15 +123,15 @@ ${font}${color}
 \
 \
 \
-${font Poiret One:size=18}${color2}\
-${voffset 36}\
-${goto 60}${execi 300 jq .main.temp ~/.cache/conky-vision/weather.json | awk '{print int($1+0.5)}' # round num}°\
+${font Raleway:weight=Bold:size=16}${color2}\
 ${font}${color}\
 \
 \
 \
 \
-${font Poiret One:size=12}${color3}\
+${font Raleway:weight=Bold:size=18}${color3}\
+${voffset 30}\
+${goto 60}${execi 300 jq .main.temp ~/.cache/conky-vision/weather.json | awk '{print int($1+0.5)}' # round num}°\
 ${goto 164}${execi 300 ~/.conky-vision/parse_weather 'max' '.main.temp' '1'}°\
 ${goto 272}${execi 300 ~/.conky-vision/parse_weather 'max' '.main.temp' '2'}°\
 ${goto 378}${execi 300 ~/.conky-vision/parse_weather 'max' '.main.temp' '3'}°\
@@ -141,7 +141,7 @@ ${font}${color}\
 \
 \
 \
-${font Poiret One:size=12}${color4}\
+${font Raleway:weight=Bold:size=14}${color4}\
 ${voffset 52}\
 ${goto 218}${execi 300 ~/.conky-vision/parse_weather 'min' '.main.temp' '1'}°\
 ${goto 324}${execi 300 ~/.conky-vision/parse_weather 'min' '.main.temp' '2'}°\
@@ -152,13 +152,13 @@ ${font}${color}
 \
 \
 \
-${font Poiret One:size=14}${color5}\
-${voffset 20}\
-${goto 76}${execi 300 LANG=${template9} LC_TIME=${template9} date +%^a}\
-${goto 182}${execi 300 LANG=${template9} LC_TIME=${template9} date -d +1day +%^a}\
-${goto 288}${execi 300 LANG=${template9} LC_TIME=${template9} date -d +2days +%^a}\
-${goto 394}${execi 300 LANG=${template9} LC_TIME=${template9} date -d +3days +%^a}\
-${goto 500}${execi 300 LANG=${template9} LC_TIME=${template9} date -d +4days +%^a}\
+${font Raleway:weight=Bold:size=14}${color5}\
+${voffset 15}\
+${goto 76}${execi 300 LANG=${template9} LC_TIME=${template9} date +%a|  awk '{print tolower($0)}'}\
+${goto 182}${execi 300 LANG=${template9} LC_TIME=${template9} date -d +1day +%a|  awk '{print tolower($0)}'}\
+${goto 288}${execi 300 LANG=${template9} LC_TIME=${template9} date -d +2days +%a|  awk '{print tolower($0)}'}\
+${goto 394}${execi 300 LANG=${template9} LC_TIME=${template9} date -d +3days +%a|  awk '{print tolower($0)}'}\
+${goto 500}${execi 300 LANG=${template9} LC_TIME=${template9} date -d +4days +%a|  awk '{print tolower($0)}'}\
 ${font}${color}
 \
 \

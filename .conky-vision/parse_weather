@@ -88,9 +88,7 @@ get_min_property () {
     local idx
     idx=$(find_position "$day")
 
-    local prop_num=0
     local time=0
-    local it=0
 
     local i=0
 
@@ -102,7 +100,6 @@ get_min_property () {
         outarray[$i]="$(jq ".list[$idx]$prop" "$forecast")"
 
         (( i++ ))
-        (( prop_num++ ))
         (( idx++ ))
 
         time=$(get_time "$idx")
@@ -132,9 +129,7 @@ get_max_property () {
     local idx
     idx=$(find_position "$day")
 
-    local prop_num=0
     local time=0
-    local it=0
 
     local i=0
 
@@ -146,7 +141,6 @@ get_max_property () {
         outarray[$i]="$(jq ".list[$idx]$prop" "$forecast")"
 
         (( i++ ))
-        (( prop_num++ ))
         (( idx++ ))
 
         time=$(get_time "$idx")
@@ -159,7 +153,6 @@ get_max_property () {
     done
     IFS=$'\n'
     res=($(sort -r <<<"${outarray[*]}" | head))
-    echo "$res" '\n' >> ~/foo
 
     unset IFS
 
